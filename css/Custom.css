@@ -1,0 +1,13 @@
+body {
+    background: black;
+}
+
+.clock {
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 7px;
+}
+
+.tabledit-edit-button{
+    color: #000000;
+}
