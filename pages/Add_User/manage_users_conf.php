@@ -1,6 +1,6 @@
 <?php  
 //Connect to database
-require'../../connectDB.php';
+require('../../connectDB.php');
 
 // select passenger 
 if (isset($_GET['select'])) {

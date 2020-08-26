@@ -13,7 +13,7 @@
 <tbody class="text-center">
 <?php
   //Connect to database
-  require'../../connectDB.php';
+  require('../../connectDB.php');
 
     $sql = "SELECT * FROM users WHERE del_fingerid=0 ORDER BY id DESC";
     $result = mysqli_stmt_init($conn);

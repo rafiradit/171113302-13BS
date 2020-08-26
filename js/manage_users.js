@@ -10,7 +10,7 @@ $(document).ready(function(){
     var gender = $(".gender:checked").val();
     
     $.ajax({
-      url: 'manage_users_conf.php',
+      url: 'pages/Add_User/manage_users_conf.php',
       type: 'POST',
       data: {
         'Add': 1,
@@ -36,7 +36,7 @@ $(document).ready(function(){
         }, 5000);
         
         $.ajax({
-          url: "manage_users_up.php"
+          url: "pages/Add_User/manage_users_up.php"
           }).done(function(data) {
           $('#manage_users').html(data);
         });
@@ -49,7 +49,7 @@ $(document).ready(function(){
     var fingerid = $('#fingerid').val();
     
     $.ajax({
-      url: 'manage_users_conf.php',
+      url: 'pages/Add_User/manage_users_conf.php',
       type: 'POST',
       data: {
         'Add_fingerID': 1,
@@ -66,7 +66,7 @@ $(document).ready(function(){
         }, 5000);
         
         $.ajax({
-          url: "manage_users_up.php"
+          url: "pages/Add_User/manage_users_up.php"
           }).done(function(data) {
           $('#manage_users').html(data);
         });
@@ -84,7 +84,7 @@ $(document).ready(function(){
     var gender = $(".gender:checked").val();
 
     $.ajax({
-      url: 'manage_users_conf.php',
+      url: 'pages/Add_User/manage_users_conf.php',
       type: 'POST',
       data: {
         'Update': 1,
@@ -110,7 +110,7 @@ $(document).ready(function(){
         }, 5000);
         
         $.ajax({
-          url: "manage_users_up.php"
+          url: "pages/Add_User/manage_users_up.php"
           }).done(function(data) {
           $('#manage_users').html(data);
         });
@@ -120,7 +120,7 @@ $(document).ready(function(){
   // delete user
   $(document).on('click', '.user_rmo', function(){
   	$.ajax({
-  	  url: 'manage_users_conf.php',
+  	  url: 'pages/Add_User/manage_users_conf.php',
   	  type: 'POST',
   	  data: {
     	'delete': 1,
@@ -141,7 +141,7 @@ $(document).ready(function(){
         }, 5000);
         
         $.ajax({
-          url: "manage_users_up.php"
+          url: "pages/Add_User/manage_users_up.php"
           }).done(function(data) {
           $('#manage_users').html(data);
         });
@@ -152,7 +152,7 @@ $(document).ready(function(){
   $(document).on('click', '.select_btn', function(){
     var Finger_id = $(this).attr("id");
     $.ajax({
-      url: 'manage_users_conf.php',
+      url: 'pages/Add_User/manage_users_conf.php',
       type: 'GET',
       data: {
       'select': 1,
@@ -168,7 +168,7 @@ $(document).ready(function(){
         }, 5000);
 
         $.ajax({
-          url: "manage_users_up.php"
+          url: "pages/Add_User/manage_users_up.php"
           }).done(function(data) {
           $('#manage_users').html(data);
         });
