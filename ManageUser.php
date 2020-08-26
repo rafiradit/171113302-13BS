@@ -17,34 +17,41 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="./images/favicon.png" />
-  <!-- Javascript Management User -->
+
+  <!-- Script Tampilin Data Siswa -->
+  <script>
+    $(window).on("load resize ", function() {
+      var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+      $('.tbl-header').css({'padding-right':scrollWidth});
+  }).resize();
+  </script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha1256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha1256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-    </script>
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <script src="js/manage_users.js"></script>
-    <script>
+          integrity="sha1256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous">
+  </script>
+
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/manage_users.js"></script>
+
+  <script>
     $(document).ready(function(){
         $.ajax({
-            url: "/pages/Add_User/manage_users_up.php"
-            }).done(function(data) {
-            $('#manage_users').html(data);
+          url: "pages/Add_User/manage_users_up.php"
+          }).done(function(data) {
+          $('#manage_users').html(data);
         });
-        setInterval(function(){
+      setInterval(function(){
         $.ajax({
-            url: "/pages/Add_User/manage_users_up.php"
-            }).done(function(data) {
-            $('#manage_users').html(data);
+          url: "pages/Add_User/manage_users_up.php"
+          }).done(function(data) {
+          $('#manage_users').html(data);
         });
-        },5000);
+      },5000);
     });
-    </script>
-    <!-- END Javascript Management User -->
+  </script>
+  <!-- END Script Tampilin Data Siswa -->
+
 </head>
 
 <body>
@@ -102,21 +109,11 @@
             </div>
             <div class="col grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                            <th>Finger .ID</th>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>S.No</th>
-                            <th>Date</th>
-                            <th>Time in</th>
-                            </tr>
-                        </thead>
-                    </table>
-                        <table class="table table-hover">
-                        <div id="manage_users"></div>
+              <div class="card-body">
+                  <h4 class="card-title">Daftar Pengguna</h4>
+                  <div class="table-responsive">
+                    <div id="manage_users"></div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,5 +1,16 @@
-<table cellpadding="0" cellspacing="0" border="0">
-<tbody>
+<table class="table table-hover">
+  <thead class="text-center">
+     <tr>
+      <th></th>
+     <th>ID Sidik Jari</th>
+     <th>Nama</th>
+     <th>J.Kelamin</th>
+     <th>S.No</th>
+     <th>Tanggal</th>
+     <th>Waktu Masuk</th>
+     </tr>
+  </thead>
+<tbody class="text-center">
 <?php
   //Connect to database
   require'../../connectDB.php';
@@ -18,12 +29,14 @@
               <TR>
               	<TD><?php  
                 		if ($row['fingerprint_select'] == 1) {
-                			echo "<img src='icons/ok_check.png' title='The selected UID'>";
+                			echo "<svg width='2em' height='2em' viewBox='0 0 16 16' class='bi bi-check2-circle' fill='currentColor' xmlns='http://www.w3.org/2000/svg'> <path fill-rule='evenodd' d='M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z'/> <path fill-rule='evenodd' d='M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z'/> </svg>";
                 		}
                     $fingerid = $row['fingerprint_id'];
-                	?>
+                  ?>
+              	</TD>
+                <TD>
                 	<form>
-                		<button type="button" class="select_btn" id="<?php echo $fingerid;?>" title="select this UID"><?php echo $fingerid;?></button>
+                		<button type="button" class="btn btn-info btn-rounded" id="<?php echo $fingerid;?>" title="select this UID"><?php echo $fingerid;?></button>
                 	</form>
                 </TD>
               <TD><?php echo $row['username'];?></TD>
