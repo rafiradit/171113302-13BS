@@ -1,6 +1,6 @@
 <?php  
 //Connect to database
-require('../../connectDB.php');
+require('connectDB.php');
 
 // select passenger 
 if (isset($_GET['select'])) {
@@ -36,7 +36,7 @@ if (isset($_GET['select'])) {
                 else{
                     mysqli_stmt_bind_param($result, "s", $Finger_id);
                     mysqli_stmt_execute($result);
-                    
+
                     echo "User Fingerprint ditandai";
                     exit();
                 }
@@ -117,7 +117,7 @@ if (isset($_POST['Add'])) {
                     }
                 }
                 else{
-                    echo "Data Kosong";
+                    echo "Empty Fields";
                     exit();
                 }
             }
@@ -146,7 +146,7 @@ if (isset($_POST['Add_fingerID'])) {
     $Gender= "Gender";
 
     if ($fingerid == 0) {
-        echo "Masukan Fingerprint ID";
+        echo "Enter a Fingerprint ID!";
         exit();
     }
     else{
@@ -191,24 +191,24 @@ if (isset($_POST['Add_fingerID'])) {
                                 else{
                                     mysqli_stmt_bind_param($result, "sdssis", $Uname, $Number, $Gender, $Email, $fingerid, $Timein );
                                     mysqli_stmt_execute($result);
-                                    echo "ID Siap Untuk Mendapatkan Fingerprint";
+                                    echo "The ID is ready to get a new Fingerprint";
                                     exit();
                                 }
                             }
                         }
                         else{
-                            echo "Tidak dapat menambahkan lebih dari satu ID setiap waktunya";
+                            echo "You can't add more than one ID each time";
                         }
                     }   
                 }
                 else{
-                    echo "ID ini telah ada, hapus dari scanner";
+                    echo "This ID is already exist! Delete it from the scanner";
                     exit();
                 }
             }
         }
         else{
-            echo "Fingerprint ID harus diantara 1 sampai 127";
+            echo "The Fingerprint ID must be between 1 & 127";
             exit();
         }
     }
@@ -240,12 +240,12 @@ if (isset($_POST['Update'])) {
         if ($row = mysqli_fetch_assoc($resultl)) {
 
             if (empty($row['username'])) {
-                echo "Tambahkan User Terlebihdahulu!";
+                echo "First, You need to add the User!";
                 exit();
             }
             else{
                 if (empty($Uname) && empty($Number) && empty($Email) && empty($Timein)) {
-                    echo "Data Kosong";
+                    echo "Empty Fields";
                     exit();
                 }
                 else{
@@ -274,7 +274,7 @@ if (isset($_POST['Update'])) {
                                     mysqli_stmt_bind_param($result, "sdsss", $Uname, $Number, $Gender, $Email, $Timein );
                                     mysqli_stmt_execute($result);
 
-                                    echo "User yang dipilih telah di update!";
+                                    echo "The selected User has been updated!";
                                     exit();
                                 }
                             }
@@ -290,18 +290,18 @@ if (isset($_POST['Update'])) {
                                         mysqli_stmt_bind_param($result, "ss", $Gender, $Timein );
                                         mysqli_stmt_execute($result);
 
-                                        echo "User yang dipilih telah di update!";
+                                        echo "The selected User has been updated!";
                                         exit();
                                     }
                                 }
                                 else{
-                                    echo "Kolom waktu kosong!";
+                                    echo "The User Time-In is empty!";
                                     exit();
                                 }    
                             }  
                         }
                         else {
-                            echo "Nomor Serial telah digunakan!";
+                            echo "The serial number is already taken!";
                             exit();
                         }
                     }
@@ -309,7 +309,7 @@ if (isset($_POST['Update'])) {
             }    
         }
         else {
-            echo "Pilih User yang hendak di perbaharui!";
+            echo "There's no selected User to update!";
             exit();
         }
     }
@@ -327,7 +327,7 @@ if (isset($_POST['delete'])) {
         mysqli_stmt_execute($result);
         $resultl = mysqli_stmt_get_result($result);
         if ($row = mysqli_fetch_assoc($resultl)) {
-            $sql="DELETE from users WHERE fingerprint_select=1";
+            $sql="UPDATE users SET del_fingerid=1 WHERE fingerprint_select=1";
             $result = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($result, $sql)) {
                 echo "SQL_Error_delete";
@@ -335,12 +335,12 @@ if (isset($_POST['delete'])) {
             }
             else{
                 mysqli_stmt_execute($result);
-                echo "User Fingerprint telah terhapus";
+                echo "The User Fingerprint has been deleted";
                 exit();
             }
         }
         else{
-            echo "Pilih User yang hendak dihapus";
+            echo "Select a User to remove";
             exit();
         }
     }
